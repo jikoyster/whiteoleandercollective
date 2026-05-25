@@ -1,236 +1,305 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>White Oleander | Dignity Economy Infrastructure</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
+
 <style>
-        html{
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #fff;
-            color: #000;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('IMG_1820.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #fff;
+        color: #000;
+    }
 
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 50;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .hero {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-        #dots-container {
-            position: relative;
-            height: 500px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin: 40px 0;
-        }
+    .hero video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
 
-        .dot {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: #444;
-            border-radius: 50%;
-            transition: all 3.8s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.8;
-        }
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.65);
+        z-index: 1;
+    }
 
-        .dot.active {
-            background: #444;
-            opacity: 1;
-        }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
+    .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 50;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .floating-photo {
-            animation: float 5s ease-in-out infinite;
-        }
+    #dots-container {
+        position: relative;
+        height: 500px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin: 40px 0;
+    }
 
-        #modal {
-            backdrop-filter: blur(8px);
-        }
-    </style>
-<meta content="White Oleander Farm Collective builds coordinated agricultural supply corridors, enabling reliable farm production, measurable outputs, and dignity-driven economic infrastructure in the Philippines." name="description"/><meta content="White Oleander Farm Collective, agriculture Philippines, farm coordination, supply corridors, rice production, TerraSync, Cebu Technological University, dignity economy, agricultural technology" name="keywords"/><meta content="White Oleander Farm Collective" name="author"/><meta content="index, follow" name="robots"/><meta content="White Oleander | Dignity Economy Infrastructure" property="og:title"/><meta content="Coordinating fragmented farms into synchronized production clusters for measurable and reliable agricultural output." property="og:description"/><meta content="website" property="og:type"/><meta content="IMG_1820.jpg" property="og:image"/><meta content="en_PH" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="White Oleander | Dignity Economy Infrastructure" name="twitter:title"/><meta content="Farmer-led nonprofit transforming fragmented farms into coordinated production corridors." name="twitter:description"/><link href="https://whiteoleander.example.com/" rel="canonical"/><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "White Oleander Farm Collective",
-  "description": "Farmer-led nonprofit coordinating agricultural supply corridors in the Philippines.",
-  "url": "https://whiteoleander.example.com/",
-  "logo": "img/logo.png",
-  "sameAs": [
-    "https://www.facebook.com/"
-  ]
-}</script></head>
+    .dot {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: #444;
+        border-radius: 50%;
+        transition: all 3.8s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.8;
+    }
+
+    .dot.active {
+        background: #444;
+        opacity: 1;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .floating-photo {
+        animation: float 5s ease-in-out infinite;
+    }
+
+    #modal {
+        backdrop-filter: blur(8px);
+    }
+</style>
+
+<meta content="White Oleander Farm Collective builds coordinated agricultural supply corridors, enabling reliable farm production, measurable outputs, and dignity-driven economic infrastructure in the Philippines." name="description"/>
+<meta content="White Oleander Farm Collective, agriculture Philippines, farm coordination, supply corridors, rice production, TerraSync, Cebu Technological University, dignity economy, agricultural technology" name="keywords"/>
+<meta content="White Oleander Farm Collective" name="author"/>
+</head>
+
 <body id="top">
+
 <!-- NAV -->
 <nav class="nav">
-<a href="#top" aria-label="Back to top">
-    <img alt="WOFC" class="h-10 md:h-12 cursor-pointer" loading="lazy" src="img/wofclogo.png"/>
-</a>
-<a class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase" href="#contact">
+    <a href="#top" aria-label="Back to top">
+        <img alt="WOFC" class="h-48 md:h-48 cursor-pointer" loading="lazy" src="images/wofc-logo-removebg-preview.png"/>
+    </a>
+
+    <a class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase" href="#contact">
         Become an Orchestrator
     </a>
 </nav>
+
 <!-- HERO -->
 <section class="hero flex items-center justify-center text-center text-white px-6">
-<div>
-<h1 aria-label="Reliability Through Coordination" class="text-5xl md:text-7xl font-black leading-tight">
+
+    <!-- VIDEO -->
+    <video autoplay muted loop playsinline>
+        <source src="images/184808-874264370.mp4" type="video/mp4">
+    </video>
+
+    <!-- OVERLAY -->
+    <div class="hero-overlay"></div>
+
+    <!-- CONTENT -->
+    <div class="hero-content">
+        <h1 aria-label="Reliability Through Coordination" class="text-5xl md:text-7xl font-black leading-tight">
             RELIABILITY THROUGH<br/>
-<span class="text-[#75D1C1]">COORDINATION</span>
-</h1>
-<p class="mt-6 text-xs tracking-[0.5em] opacity-60 uppercase">
+            <span class="text-[#75D1C1]">COORDINATION</span>
+        </h1>
+
+        <p class="mt-6 text-xs tracking-[0.5em] opacity-60 uppercase">
             White Oleander Farm Collective
         </p>
-<div class="mt-8 flex justify-center items-center gap-2">
-<p class="text-xs text-gray-300">Backed by</p>
-<span class="text-white text-xs font-bold px-3 py-1 bg-gray-800 rounded">WESTERN UNION FOUNDATION</span>
-</div>
-</div>
+
+        <div class="mt-8 flex justify-center items-center gap-2">
+            <p class="text-xs text-gray-300">Backed by</p>
+            <span class="text-white text-xs font-bold px-3 py-1 bg-gray-800 rounded">
+                WESTERN UNION FOUNDATION
+            </span>
+        </div>
+    </div>
 </section>
+
 <!-- NONPROFIT STEWARD STATEMENT -->
 <section class="py-12 px-6 text-center bg-white border-b border-gray-100">
-<p class="text-xs tracking-[0.4em] text-gray-400 mb-4">Nonprofit Steward</p>
-<p class="text-sm text-gray-600 max-w-2xl mx-auto">
-        White Oleander Farm Collective is a farmer-led nonprofit. Our mission is to encode dignity into every transaction. 
+    <p class="text-xs tracking-[0.4em] text-gray-400 mb-4">Nonprofit Steward</p>
+    <p class="text-sm text-gray-600 max-w-2xl mx-auto">
+        White Oleander Farm Collective is a farmer-led nonprofit. Our mission is to encode dignity into every transaction.
         Technology provided by TerraSync. Backed by Western Union Foundation. Academic validation by Cebu Technological University.
     </p>
 </section>
+
 <!-- MECHANISM -->
 <section class="py-20 px-6 text-center">
-<h2 class="text-xs tracking-[0.4em] text-gray-400 mb-12 font-bold uppercase">
+    <h2 class="text-xs tracking-[0.4em] text-gray-400 mb-12 font-bold uppercase">
         System Transformation
     </h2>
-<div id="dots-container"></div>
-<p class="text-gray-500 text-sm uppercase tracking-widest mb-12">
+
+    <div id="dots-container"></div>
+
+    <p class="text-gray-500 text-sm uppercase tracking-widest mb-12">
         Fragmented farms
     </p>
-<p class="text-3xl mb-12">↓</p>
-<p class="text-black text-lg font-bold uppercase tracking-wide">
+
+    <p class="text-3xl mb-12">↓</p>
+
+    <p class="text-black text-lg font-bold uppercase tracking-wide">
         Synchronized production clusters
     </p>
-<p class="mt-6 text-gray-600 max-w-xl mx-auto">
+
+    <p class="mt-6 text-gray-600 max-w-xl mx-auto">
         We organize fragmented farms into coordinated supply corridors—making production reliable, measurable, and contractable.
     </p>
 </section>
+
 <!-- ECONOMIC DELTA -->
 <section class="bg-gray-50 py-24 px-6 text-center">
-<h2 class="text-xs tracking-[0.4em] text-gray-400 mb-12 font-bold">
+    <h2 class="text-xs tracking-[0.4em] text-gray-400 mb-12 font-bold">
         Economic Delta
     </h2>
-<p class="text-8xl font-black text-[#75D1C1]">₱10</p>
-<p class="text-xl font-bold uppercase mt-4">
+
+    <p class="text-8xl font-black text-[#75D1C1]">₱10</p>
+
+    <p class="text-xl font-bold uppercase mt-4">
         Price increase through coordination
     </p>
-<p class="mt-6 text-gray-600 max-w-xl mx-auto">
+
+    <p class="mt-6 text-gray-600 max-w-xl mx-auto">
         Fragmented palay at ₱46/kg becomes coordinated supply at ₱56/kg.
         The premium is reliability priced into the system.
     </p>
 </section>
+
 <!-- PROOF -->
 <section class="py-24 px-6">
-<h2 class="text-xs tracking-[0.4em] text-gray-400 mb-16 text-center font-bold">
+    <h2 class="text-xs tracking-[0.4em] text-gray-400 mb-16 text-center font-bold">
         Proof of Execution
     </h2>
-<div class="grid md:grid-cols-12 gap-2 max-w-6xl mx-auto">
-<div class="md:col-span-8 relative cursor-pointer floating-photo overflow-hidden rounded-sm" onclick="openModal('milling')">
-<img alt="Img 5171" class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-105" loading="lazy" src="IMG_5171.jpg"/>
-<div class="absolute bottom-6 left-6 text-white">
-<p class="text-4xl font-black">64 METRIC TONS</p>
-<p class="text-xs uppercase tracking-widest">Rice Corridor Output</p>
-</div>
-</div>
-<div class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-2">
-<div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('field')" style="animation: float 6s ease-in-out infinite;">
-<img alt="Gomboc Pilot" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" src="gomboc pilot.png"/>
-</div>
-<div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('device')" style="animation: float 7s ease-in-out infinite;">
-<img alt="Gomboc 2025" class="w-full h-full object-contain bg-white p-4" loading="lazy" src="GOMBOC 2025.png"/>
-</div>
-</div>
-</div>
-<!-- Academic Partner Badge -->
-<div class="flex justify-center gap-6 mt-12">
-<span class="text-xs text-gray-400">Academic Partner:</span>
-<span class="text-xs font-bold">Cebu Technological University</span>
-<span class="text-xs text-gray-400">|</span>
-<span class="text-xs text-gray-400">Technology Partner:</span>
-<span class="text-xs font-bold">TerraSync</span>
-</div>
+
+    <div class="grid md:grid-cols-12 gap-2 max-w-6xl mx-auto">
+
+        <div class="md:col-span-8 relative cursor-pointer floating-photo overflow-hidden rounded-sm" onclick="openModal('milling')">
+            <img alt="Img 5171" class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-105" loading="lazy" src="IMG_5171.jpg"/>
+
+            <div class="absolute bottom-6 left-6 text-white">
+                <p class="text-4xl font-black">64 METRIC TONS</p>
+                <p class="text-xs uppercase tracking-widest">Rice Corridor Output</p>
+            </div>
+        </div>
+
+        <div class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-2">
+
+            <div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('field')" style="animation: float 6s ease-in-out infinite;">
+                <img alt="Gomboc Pilot" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" src="gomboc pilot.png"/>
+            </div>
+
+            <div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('device')" style="animation: float 7s ease-in-out infinite;">
+                <img alt="Gomboc 2025" class="w-full h-full object-contain bg-white p-4" loading="lazy" src="GOMBOC 2025.png"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center gap-6 mt-12">
+        <span class="text-xs text-gray-400">Academic Partner:</span>
+        <span class="text-xs font-bold">Cebu Technological University</span>
+        <span class="text-xs text-gray-400">|</span>
+        <span class="text-xs text-gray-400">Technology Partner:</span>
+        <span class="text-xs font-bold">TerraSync</span>
+    </div>
 </section>
+
 <!-- DISPATCH -->
 <section class="bg-black text-white py-24 px-6 text-center">
-<h2 class="text-xs tracking-[0.4em] text-[#75D1C1] mb-12 font-bold">
+    <h2 class="text-xs tracking-[0.4em] text-[#75D1C1] mb-12 font-bold">
         Field Dispatch
     </h2>
-<p class="text-2xl font-bold mb-6">
+
+    <p class="text-2xl font-bold mb-6">
         Operational intelligence from live corridors
     </p>
-<a class="bg-[#75D1C1] text-black px-8 py-4 text-xs font-black tracking-widest uppercase" href="#contact">
+
+    <a class="bg-[#75D1C1] text-black px-8 py-4 text-xs font-black tracking-widest uppercase" href="#contact">
         Subscribe to Dispatches
     </a>
 </section>
-<!-- CTA - ORCHESTRATOR INVITATION -->
+
+<!-- CTA -->
 <section class="py-32 px-6 text-center" id="contact">
-<h2 class="text-xs tracking-[0.4em] text-gray-400 mb-8 font-bold">
+    <h2 class="text-xs tracking-[0.4em] text-gray-400 mb-8 font-bold">
         We are prioritizing operational collaboration over capital support.
     </h2>
-<p class="text-3xl md:text-5xl font-black mb-6 max-w-3xl mx-auto">
+
+    <p class="text-3xl md:text-5xl font-black mb-6 max-w-3xl mx-auto">
         Become an Orchestrator
     </p>
-<p class="text-gray-600 max-w-xl mx-auto mb-12">
-        Help us shape the future of this corridor. We are looking for partners ready to move beyond funding and into action—by launching a pilot and measuring FFR, you will provide the cornerstone for our long-term success.
+
+    <p class="text-gray-600 max-w-xl mx-auto mb-12">
+        Help us shape the future of this corridor.
     </p>
-<form action="#" class="max-w-md mx-auto" method="POST">
-<input class="w-full p-4 border border-gray-300 mb-4 text-center" placeholder="Your email" required="" type="email"/>
-<textarea class="w-full p-4 border border-gray-300 mb-4 text-center" placeholder="How can you coordinate with us?" rows="3"></textarea>
-<button class="bg-[#75D1C1] text-black px-10 py-5 text-xs font-black tracking-widest uppercase w-full" type="submit">
+
+    <form action="#" class="max-w-md mx-auto" method="POST">
+        <input class="w-full p-4 border border-gray-300 mb-4 text-center" placeholder="Your email" required="" type="email"/>
+
+        <textarea class="w-full p-4 border border-gray-300 mb-4 text-center" placeholder="How can you coordinate with us?" rows="3"></textarea>
+
+        <button class="bg-[#75D1C1] text-black px-10 py-5 text-xs font-black tracking-widest uppercase w-full" type="submit">
             Send Inquiry
         </button>
-</form>
-<p class="text-xs text-gray-400 mt-6">We will respond within 48 hours.</p>
+    </form>
+
+    <p class="text-xs text-gray-400 mt-6">We will respond within 48 hours.</p>
 </section>
+
 <!-- FOOTER -->
 <footer class="py-12 text-center border-t border-gray-100">
-<img alt="Woflogo" class="h-10 mx-auto mb-4" loading="lazy" src="WOFLOGO.png"/>
-<p class="text-xs tracking-widest text-gray-400 uppercase">
+    <img alt="Woflogo" class="h-24 mx-auto mb-4" loading="lazy" src="images/wofc-logo-removebg-preview.png"/>
+
+    <p class="text-xs tracking-widest text-gray-400 uppercase">
         White Oleander Farm Collective
     </p>
-<p class="text-xs text-gray-400 mt-2">Backed by Western Union Foundation · Validated by CTU</p>
+
+    <p class="text-xs text-gray-400 mt-2">
+        Backed by Western Union Foundation · Validated by CTU
+    </p>
 </footer>
+
 <!-- MODAL -->
 <div class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-6" id="modal">
-<div class="bg-white text-black p-10 max-w-lg w-full relative border-l-8 border-[#75D1C1]">
-<button class="absolute top-4 right-4 font-black text-xl" onclick="closeModal()">✕</button>
-<div class="space-y-4" id="modal-content"></div>
+    <div class="bg-white text-black p-10 max-w-lg w-full relative border-l-8 border-[#75D1C1]">
+        <button class="absolute top-4 right-4 font-black text-xl" onclick="closeModal()">✕</button>
+        <div class="space-y-4" id="modal-content"></div>
+    </div>
 </div>
-</div>
+
 <script>
-/* DOT ANIMATION */
 function initializeDotAnimation() {
     const container = document.getElementById('dots-container');
     const numDots = 40;
@@ -240,10 +309,13 @@ function initializeDotAnimation() {
     for (let i = 0; i < numDots; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
+
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
+
         dot.style.left = startX + '%';
         dot.style.top = startY + '%';
+
         container.appendChild(dot);
         dots.push(dot);
     }
@@ -253,6 +325,7 @@ function initializeDotAnimation() {
             const angle = (i / numDots) * (Math.PI * 2);
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius;
+
             dot.style.left = `calc(50% + ${x}px)`;
             dot.style.top = `calc(50% + ${y}px)`;
             dot.classList.add('active');
@@ -312,5 +385,6 @@ function closeModal() {
     modal.classList.add('hidden');
 }
 </script>
+
 </body>
 </html>
