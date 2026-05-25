@@ -8,6 +8,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
 <style>
+        html{
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background: #fff;
@@ -83,10 +86,12 @@
     "https://www.facebook.com/"
   ]
 }</script></head>
-<body>
+<body id="top">
 <!-- NAV -->
 <nav class="nav">
-<img alt="WOFC" class="h-10 md:h-12" loading="lazy" src="img/wofclogo.png"/>
+<a href="#top" aria-label="Back to top">
+    <img alt="WOFC" class="h-10 md:h-12 cursor-pointer" loading="lazy" src="img/wofclogo.png"/>
+</a>
 <a class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase" href="#contact">
         Become an Orchestrator
     </a>
@@ -198,7 +203,7 @@
         Become an Orchestrator
     </p>
 <p class="text-gray-600 max-w-xl mx-auto mb-12">
-        Moving beyond financial contributions, we are looking for operational partners. By hosting a pilot and measuring FFR, you can help us lay the foundation for this critical corridor.
+        Help us shape the future of this corridor. We are looking for partners ready to move beyond funding and into action—by launching a pilot and measuring FFR, you will provide the cornerstone for our long-term success.
     </p>
 <form action="#" class="max-w-md mx-auto" method="POST">
 <input class="w-full p-4 border border-gray-300 mb-4 text-center" placeholder="Your email" required="" type="email"/>
