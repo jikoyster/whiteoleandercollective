@@ -4,6 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>White Oleander | Dignity Economy Infrastructure</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-MXe5EK5gyK+fbhwQy/dukwz9fw71HZcsM4KsyDBDTvMyjymkiO0M5qqU0lF4vqLI4VnKf1+DIKf1GM6RFkO8PA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
 
@@ -386,10 +388,13 @@ function closeModal() {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
 }
+
+$(document).ready(function() {
+    // Replace '.report-button-class' with the actual class or ID of the button
+    $('.min-h-screen button, .min-h-screen .text-card-foreground').css('display', 'none');
+});
 </script>
 
- <style type="text/css">
-    .min-h-screen button, .min-h-screen .text-card-foreground{display:none !important;}
- </style>
+ 
 </body>
 </html>
