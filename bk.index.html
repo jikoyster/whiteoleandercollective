@@ -1,149 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>White Oleander | Dignity Economy Infrastructure</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Oleander | Dignity Economy Infrastructure</title>
 
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: #fff;
-        color: #000;
-    }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #000;
+        }
 
-    .hero {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-    }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('IMG_1820.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
-    .hero video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-    }
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,0.65);
-        z-index: 1;
-    }
+        #dots-container {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 40px 0;
+        }
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
+        .dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #444;
+            border-radius: 50%;
+            transition: all 3.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.8;
+        }
 
-    .nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 50;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .dot.active {
+            background: #444;
+            opacity: 1;
+        }
 
-    #dots-container {
-        position: relative;
-        height: 500px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin: 40px 0;
-    }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
 
-    .dot {
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        background: #444;
-        border-radius: 50%;
-        transition: all 3.8s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0.8;
-    }
+        .floating-photo {
+            animation: float 5s ease-in-out infinite;
+        }
 
-    .dot.active {
-        background: #444;
-        opacity: 1;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0px); }
-    }
-
-    .floating-photo {
-        animation: float 5s ease-in-out infinite;
-    }
-
-    #modal {
-        backdrop-filter: blur(8px);
-    }
-</style>
-
-<meta content="White Oleander Farm Collective builds coordinated agricultural supply corridors, enabling reliable farm production, measurable outputs, and dignity-driven economic infrastructure in the Philippines." name="description"/>
-<meta content="White Oleander Farm Collective, agriculture Philippines, farm coordination, supply corridors, rice production, TerraSync, Cebu Technological University, dignity economy, agricultural technology" name="keywords"/>
-<meta content="White Oleander Farm Collective" name="author"/>
+        #modal {
+            backdrop-filter: blur(8px);
+        }
+    </style>
 </head>
-
-<body id="top">
+<body>
 
 <!-- NAV -->
 <nav class="nav">
-    <a href="#top" aria-label="Back to top">
-        <img alt="WOFC" class="h-48 md:h-48 cursor-pointer" loading="lazy" src="images/wofc-logo-removebg-preview.png"/>
-    </a>
+    <img src="WOFLOGO.png" alt="WOFC" class="h-10 md:h-12">
 
-    <a class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase" href="#contact">
+    <a href="#contact" class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase">
         Become an Orchestrator
     </a>
 </nav>
 
 <!-- HERO -->
 <section class="hero flex items-center justify-center text-center text-white px-6">
-
-    <!-- VIDEO -->
-    <video autoplay muted loop playsinline>
-        <source src="images/rice field.mp4" type="video/mp4">
-    </video>
-
-    <!-- OVERLAY -->
-    <div class="hero-overlay"></div>
-
-    <!-- CONTENT -->
-    <div class="hero-content">
-        <h1 aria-label="Reliability Through Coordination" class="text-5xl md:text-7xl font-black leading-tight">
-            RELIABILITY THROUGH<br/>
+    <div>
+        <h1 class="text-5xl md:text-7xl font-black leading-tight">
+            RELIABILITY THROUGH<br>
             <span class="text-[#75D1C1]">COORDINATION</span>
         </h1>
-
         <p class="mt-6 text-xs tracking-[0.5em] opacity-60 uppercase">
             White Oleander Farm Collective
         </p>
-
         <div class="mt-8 flex justify-center items-center gap-2">
             <p class="text-xs text-gray-300">Backed by</p>
-            <span class="text-white text-xs font-bold px-3 py-1 bg-gray-800 rounded">
-                WESTERN UNION FOUNDATION
-            </span>
+            <span class="text-white text-xs font-bold px-3 py-1 bg-gray-800 rounded">WESTERN UNION FOUNDATION</span>
         </div>
     </div>
 </section>
@@ -152,7 +106,7 @@
 <section class="py-12 px-6 text-center bg-white border-b border-gray-100">
     <p class="text-xs tracking-[0.4em] text-gray-400 mb-4">Nonprofit Steward</p>
     <p class="text-sm text-gray-600 max-w-2xl mx-auto">
-        White Oleander Farm Collective is a farmer-led nonprofit. Our mission is to encode dignity into every transaction.
+        White Oleander Farm Collective is a farmer-led nonprofit. Our mission is to encode dignity into every transaction. 
         Technology provided by TerraSync. Backed by Western Union Foundation. Academic validation by Cebu Technological University.
     </p>
 </section>
@@ -207,27 +161,26 @@
     <div class="grid md:grid-cols-12 gap-2 max-w-6xl mx-auto">
 
         <div class="md:col-span-8 relative cursor-pointer floating-photo overflow-hidden rounded-sm" onclick="openModal('milling')">
-            <img alt="Img 5171" 
-            class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-120" loading="lazy" 
-            src="images/terraced-agriculture-landscape.avif"/>
-
-            <div class="absolute bottom-20 left-6 text-white bg-black bg-opacity-60 p-4">
+            <img src="IMG_5171.jpg" class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-105">
+            <div class="absolute bottom-6 left-6 text-white">
                 <p class="text-4xl font-black">64 METRIC TONS</p>
-                <p class="text-xs uppercase tracking-widest">tropical farming landscape featuring terraced hillside agriculture, banana trees, and local farmers working on sustainable rural farmland</p>
+                <p class="text-xs uppercase tracking-widest">Rice Corridor Output</p>
             </div>
         </div>
 
-        <div class="md:col-span-3 grid grid-cols-1 gap-2">
-            <div class="relative h-[250px] bg-[#dfe7db] cursor-pointer overflow-hidden rounded-sm" onclick="openModal('field')" style="animation: float 6s ease-in-out infinite;">
-                <img alt="Gomboc Pilot" class="w-full h-full object-cover" loading="lazy" src="images/gomboc pilot.avif"/>
+        <div class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-2">
+            <div class="relative cursor-pointer overflow-hidden rounded-sm" style="animation: float 6s ease-in-out infinite;" onclick="openModal('field')">
+                <img src="gomboc pilot.png" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
             </div>
 
-            <div class="relative h-[250px] bg-[#f3efe8] cursor-pointer overflow-hidden rounded-sm" onclick="openModal('device')" style="animation: float 7s ease-in-out infinite;">
-                <img alt="Gomboc 2025" class="w-full h-full object-cover" loading="lazy" src="images/GOMBOC 2025.avif"/>
+            <div class="relative cursor-pointer overflow-hidden rounded-sm" style="animation: float 7s ease-in-out infinite;" onclick="openModal('device')">
+                <img src="GOMBOC 2025.png" class="w-full h-full object-contain bg-white p-4">
             </div>
         </div>
+
     </div>
 
+    <!-- Academic Partner Badge -->
     <div class="flex justify-center gap-6 mt-12">
         <span class="text-xs text-gray-400">Academic Partner:</span>
         <span class="text-xs font-bold">Cebu Technological University</span>
@@ -247,15 +200,15 @@
         Operational intelligence from live corridors
     </p>
 
-    <a class="bg-[#75D1C1] text-black px-8 py-4 text-xs font-black tracking-widest uppercase" href="#contact">
+    <a href="#contact" class="bg-[#75D1C1] text-black px-8 py-4 text-xs font-black tracking-widest uppercase">
         Subscribe to Dispatches
     </a>
 </section>
 
-<!-- CTA -->
-<section class="py-32 px-6 text-center" id="contact">
+<!-- CTA - ORCHESTRATOR INVITATION -->
+<section id="contact" class="py-32 px-6 text-center">
     <h2 class="text-xs tracking-[0.4em] text-gray-400 mb-8 font-bold">
-        We are prioritizing operational collaboration over capital support.
+        Not Investment. Coordination.
     </h2>
 
     <p class="text-3xl md:text-5xl font-black mb-6 max-w-3xl mx-auto">
@@ -263,44 +216,40 @@
     </p>
 
     <p class="text-gray-600 max-w-xl mx-auto mb-12">
-        Financial contributions are not our priority; rather, we are looking for strategic partners to collaborate with. We invite you to host a pilot program, track FFR metrics, and help us build this corridor together.
+        We do not need your money. We need your coordination. 
+        Host a pilot. Measure FFR. Build a corridor.
     </p>
 
-    <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-    <center><zapier-interfaces-page-embed page-id='cmpmhjgid000rih1kbzo5xyib' test-id='cmpmhjgid000rih1kbzo5xyib-zapier-interfaces-page-embed-iframe' no-background='false'  style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed></center>
-
-    <p class="text-xs text-gray-400 mt-6">We will respond within 24 hours.</p>
+    <form action="#" method="POST" class="max-w-md mx-auto">
+        <input type="email" placeholder="Your email" class="w-full p-4 border border-gray-300 mb-4 text-center" required>
+        <textarea rows="3" placeholder="How can you coordinate with us?" class="w-full p-4 border border-gray-300 mb-4 text-center"></textarea>
+        <button type="submit" class="bg-[#75D1C1] text-black px-10 py-5 text-xs font-black tracking-widest uppercase w-full">
+            Send Inquiry
+        </button>
+    </form>
+    
+    <p class="text-xs text-gray-400 mt-6">We will respond within 48 hours.</p>
 </section>
 
 <!-- FOOTER -->
 <footer class="py-12 text-center border-t border-gray-100">
-    <img alt="Woflogo" class="h-24 mx-auto mb-4" loading="lazy" src="images/wofc-logo-removebg-preview.png"/>
-
+    <img src="WOFLOGO.png" class="h-10 mx-auto mb-4">
     <p class="text-xs tracking-widest text-gray-400 uppercase">
         White Oleander Farm Collective
     </p>
-
-    <p class="text-xs text-gray-400 mt-2">
-        Backed by Western Union Foundation · Validated by CTU
-    </p>
+    <p class="text-xs text-gray-400 mt-2">Backed by Western Union Foundation · Validated by CTU</p>
 </footer>
 
 <!-- MODAL -->
-<div class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-6" id="modal">
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-6">
     <div class="bg-white text-black p-10 max-w-lg w-full relative border-l-8 border-[#75D1C1]">
-        <button class="absolute top-4 right-4 font-black text-xl" onclick="closeModal()">✕</button>
-        <div class="space-y-4" id="modal-content"></div>
+        <button onclick="closeModal()" class="absolute top-4 right-4 font-black text-xl">✕</button>
+        <div id="modal-content" class="space-y-4"></div>
     </div>
 </div>
 
 <script>
-const modal = document.getElementById('modal');
-modal.addEventListener('click', function(event) {
-    // If the click target is the modal container itself (not the inner content), close it
-    if (event.target === modal) {
-        closeModal();
-    }
-});
+/* DOT ANIMATION */
 function initializeDotAnimation() {
     const container = document.getElementById('dots-container');
     const numDots = 40;
@@ -310,13 +259,10 @@ function initializeDotAnimation() {
     for (let i = 0; i < numDots; i++) {
         const dot = document.createElement('div');
         dot.className = 'dot';
-
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
-
         dot.style.left = startX + '%';
         dot.style.top = startY + '%';
-
         container.appendChild(dot);
         dots.push(dot);
     }
@@ -326,7 +272,6 @@ function initializeDotAnimation() {
             const angle = (i / numDots) * (Math.PI * 2);
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius;
-
             dot.style.left = `calc(50% + ${x}px)`;
             dot.style.top = `calc(50% + ${y}px)`;
             dot.classList.add('active');
@@ -384,7 +329,6 @@ function openModal(type) {
 function closeModal() {
     const modal = document.getElementById('modal');
     modal.classList.add('hidden');
-    modal.classList.remove('flex');
 }
 </script>
 
