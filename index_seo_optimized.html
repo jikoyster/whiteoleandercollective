@@ -207,22 +207,23 @@
     <div class="grid md:grid-cols-12 gap-2 max-w-6xl mx-auto">
 
         <div class="md:col-span-8 relative cursor-pointer floating-photo overflow-hidden rounded-sm" onclick="openModal('milling')">
-            <img alt="Img 5171" class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-105" loading="lazy" src="IMG_5171.jpg"/>
+            <img alt="Img 5171" 
+            class="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-120" loading="lazy" 
+            src="images/terraced-agriculture-landscape.avif"/>
 
             <div class="absolute bottom-6 left-6 text-white">
-                <p class="text-4xl font-black">64 METRIC TONS</p>
-                <p class="text-xs uppercase tracking-widest">Rice Corridor Output</p>
+                <p class="text-4xl font-black">Tropical Hillside Farming and Terraced Agriculture</p>
+                <p class="text-xs uppercase tracking-widest">tropical farming landscape featuring terraced hillside agriculture, banana trees, and local farmers working on sustainable rural farmland</p>
             </div>
         </div>
 
-        <div class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-2">
-
-            <div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('field')" style="animation: float 6s ease-in-out infinite;">
-                <img alt="Gomboc Pilot" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" src="gomboc pilot.png"/>
+        <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-1">
+            <div class="relative h-half cursor-pointer overflow-hidden rounded-sm" onclick="openModal('field')" style="animation: float 6s ease-in-out infinite;">
+                <img alt="Gomboc Pilot" class="w-full h-half object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" src="images/gomboc pilot.avif"/>
             </div>
 
-            <div class="relative cursor-pointer overflow-hidden rounded-sm" onclick="openModal('device')" style="animation: float 7s ease-in-out infinite;">
-                <img alt="Gomboc 2025" class="w-full h-full object-contain bg-white p-4" loading="lazy" src="GOMBOC 2025.png"/>
+            <div class="relative h-half cursor-pointer overflow-hidden rounded-sm" onclick="openModal('device')" style="animation: float 7s ease-in-out infinite;">
+                <img alt="Gomboc 2025" class="w-full h-half object-contain bg-white p-4" loading="lazy" src="images/GOMBOC 2025.avif"/>
             </div>
         </div>
     </div>
@@ -300,6 +301,13 @@
 </div>
 
 <script>
+const modal = document.getElementById('modal');
+modal.addEventListener('click', function(event) {
+    // If the click target is the modal container itself (not the inner content), close it
+    if (event.target === modal) {
+        closeModal();
+    }
+});
 function initializeDotAnimation() {
     const container = document.getElementById('dots-container');
     const numDots = 40;
@@ -383,6 +391,7 @@ function openModal(type) {
 function closeModal() {
     const modal = document.getElementById('modal');
     modal.classList.add('hidden');
+    modal.classList.remove('flex');
 }
 </script>
 
