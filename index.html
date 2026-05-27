@@ -53,12 +53,30 @@
     .nav {
         position: fixed;
         top: 0;
+        height: 8rem;
         width: 100%;
         z-index: 50;
         padding: 20px 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        transition: padding 220ms ease, background-color 220ms ease;
+        -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* Shrunk nav state when user scrolls down */
+    .nav.shrink {
+        padding: 8px 24px;
+        background-color: rgba(0,0,0,0.7);
+    }
+
+    .nav .nav-logo {
+        height: 5rem; /* default */
+        transition: height 220ms ease, transform 220ms ease;
+    }
+
+    .nav.shrink .nav-logo {
+        height: 33rem !important; /* shrunk */
     }
 
     #dots-container {
@@ -110,9 +128,9 @@
 <body id="top">
 
 <!-- NAV -->
-<nav class="nav bg-black bg-opacity-60 backdrop-blur-sm border-b border-gray-200">
+<nav id="site-nav" class="nav bg-black bg-opacity-60 backdrop-blur-sm border-b border-gray-200">
     <a href="#top" aria-label="Back to top">
-        <img alt="WOFC" class="h-24 md:h-24 cursor-pointer" loading="lazy" src="images/wofc-logo.png"/>
+        <img alt="WOFC" class="h-24 md:h-24 nav-logo cursor-pointer" loading="lazy" src="images/wofc-logo.avif"/>
     </a>
 
     <a class="bg-[#75D1C1] text-black px-6 py-3 text-[10px] font-black tracking-widest uppercase" href="#contact">
@@ -277,7 +295,7 @@
 
 <!-- FOOTER -->
 <footer class="py-12 text-center border-t border-gray-100">
-    <img alt="Woflogo" class="h-24 mx-auto mb-4" loading="lazy" src="images/wofc-logo-removebg-preview.png"/>
+    <img alt="Woflogo" class="h-24 mx-auto mb-4" loading="lazy" src="images/footer-wofc-logo.avif"/>
 
     <p class="text-xs tracking-widest text-gray-400 uppercase">
         White Oleander Farm Collective
@@ -394,6 +412,25 @@ $(document).ready(function() {
     // Replace '.report-button-class' with the actual class or ID of the button
     $('.min-h-screen button, .min-h-screen .text-card-foreground').css('display', 'none');
 });
+
+// Shrink nav on scroll
+(function() {
+    const nav = document.getElementById('site-nav') || document.querySelector('.nav');
+    if (!nav) return;
+
+    const onScroll = function() {
+        const offset = window.scrollY || window.pageYOffset;
+        if (offset > 30) {
+            nav.classList.add('shrink');
+        } else {
+            nav.classList.remove('shrink');
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // run once to set initial state
+    onScroll();
+})();
 </script>
 
  
